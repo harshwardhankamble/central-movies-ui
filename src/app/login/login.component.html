@@ -1,0 +1,17 @@
+<div class="login-page">
+  <div class="error-message mb-2" *ngIf="accessToken.accessDeniedReason !== ''">
+    <div class="alert alert-danger">{{ accessToken.accessDeniedReason }}</div>
+  </div>
+  <form class="border border-info-subtle form-login" #loginForm="ngForm" (ngSubmit)="loginUserAndGenerateToken(loginForm)">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username" required ngModel>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <p><a href="/register" class="link-primary">Create New Account</a></p>
+  </form>
+</div>

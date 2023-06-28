@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-sm-2" *ngFor="let show of shows">
+        <div class="card show-card">
+            <div class="card-body">
+                <h5 class="card-title" (click)="getShowDetails(show['showId'])" style="color: blue;" >{{ show['movieName'] }}</h5>
+                <p class="card-text">Running in: {{ show['theatreName'] }}</p>
+            </div>
+        </div>
+    </div>
+</div>

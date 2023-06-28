@@ -1,0 +1,32 @@
+<div class="container">
+    <div>
+        <form class="book-form mx-auto" #bookingForm="ngForm" (ngSubmit)="bookShow(bookingForm)">
+            <div class="mb-3">
+                <label for="showId" class="form-label">Show</label>
+                <select class="form-select" id="showId" name="showId" (change)="getShowsForShowId($event)" ngModel>
+                    <option *ngFor="let show of shows" value="{{ show['showId'] }}">{{ show['showName'] + ' ' +
+                        show['theatreName'] }}</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="showId" class="form-label">Select Show Date Time</label>
+                <select class="form-select" id="showTime" name="showTime" (change)="getSeatsForShow($event)" ngModel>
+                    <option *ngFor="let st of showTime" value="{{st['screenId']}}${{st['showDateTime']}}">
+                        {{ st['screenName'] + ' - ' + st['showDateTime'] }}</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1" *ngFor="let seat of seats">
+                    <div class="card seat-card" *ngIf="seat['seatStatus'] === 'VACCANT'"
+                        style="background-color: lightgray;" (click)="addSeatsToForm(seat['seatId'])">{{ seat['seatId']
+                        }}</div>
+                    <div class="card seat-card" *ngIf="seat['seatStatus'] !== 'VACCANT'"
+                        style="background-color: lightgreen;">{{ seat['seatId'] }}</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

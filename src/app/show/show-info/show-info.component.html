@@ -1,0 +1,30 @@
+<div class="contaiener">
+    <div class="row">
+        <div class="col-sm-3">
+            <img src="{{ show['posterImageString'] }}" alt='{{ show["movieName"]}}' id="movie-image">
+        </div>
+        <div class="col-sm-3">
+            <div class="list-group" *ngFor="let showTime of show['showTime']">
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ showTime['screenName'] }}</h5>
+                        <small>{{ showTime['showStatus'] }}</small>
+                    </div>
+                    <p class="mb-1">{{ showTime['showDateTime'] }}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+        <div class="card show-card">
+            <div class="card-body">
+                <h5 class="card-title">{{ show['movieName'] }}</h5>
+                <p class="card-text">Running in: {{ show['theatreName'] }}</p>
+                <p> Released Date: {{ show['startingDate'] }}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Booking Id</th>
+                <th scope="col">Screen Id</th>
+                <th scope="col">Show Date Time</th>
+                <th scope="col">Total Seats</th>
+                <th scope="col">Booking Status</th>
+                <th scope="col">Seats Booked</th>
+                <th scope="col">Pay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let audit of bookingAudit">
+                <th scope="row">{{ audit['bookingId'] }}</th>
+                <td>{{ audit['screenId'] }}</td>
+                <td>{{ audit['showDateTimeString'] }}</td>
+                <td>{{ audit['totalSeats'] }}</td>
+                <td>{{ audit['bookingStatus'] }}</td>
+                <td>{{ audit['seatIds'] }}</td>
+                <td><button type="button" class="btn btn-primary" [disabled]="audit['bookingStatus'] !== 'UNPAID'"
+                        (click)="doPaymentForBooking(audit['bookingId'], audit['totalCost'])">Pay</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

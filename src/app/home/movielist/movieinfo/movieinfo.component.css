@@ -1,0 +1,25 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+#movie-image {
+    height: 30rem;
+    width: 47rem;
+}
+
+.col-sm-6 {
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 2rem;
+}
+
+#movie-casts {
+    margin-right: 2rem;
+    padding-right: 2rem;
+    margin-top: 1rem;
+}
+
+.show-card {
+    height: 7rem;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+}

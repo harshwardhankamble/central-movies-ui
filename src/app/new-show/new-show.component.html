@@ -1,0 +1,64 @@
+<div class="container">
+    <form [formGroup]="showForm" (ngSubmit)="submitShowData()" class="show-form mx-auto">
+        <div class="mb-3">
+            <label for="showName" class="form-label">Show Name</label>
+            <input type="text" class="form-control" id="showName" name="showName" formControlName="showName">
+        </div>
+
+        <div class="mb-3">
+            <label for="movieId" class="form-label">Movie</label>
+            <div class="mb-3">
+                <select class="form-select" id="movieId" name="movieId" formControlName="movieId">
+                    <option *ngFor="let movie of movies" value="{{ movie['movieId']}}">{{ movie['movieName'] }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="theatreId" class="form-label">Theatre</label>
+            <div class="mb-3">
+                <select class="form-select" id="theatreId" name="theatreId" formControlName="theatreId" (change)="loadScreenData($event)">
+                    <option *ngFor="let theatre of theatres" value="{{ theatre['theatreId']}}">{{ theatre['theatreName']
+                        }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="startingDate" class="form-label">Show Starting Date</label>
+            <input type="date" class="form-control" id="startingDate" name="startingDate" formControlName="startingDate">
+        </div>
+
+        <div class="mb-3" formArrayName="showTime">
+
+            <button type="button" class="btn btn-primary" (click)="addNewShowTime()">Add More Show</button>
+
+            <div class="row" *ngFor="let show of getShowTimes().controls; let i = index" [formGroupName]="i">
+                <div class="col-sm-3">
+                    <select class="form-select" id="screenId" name="screenId" formControlName="screenId">
+                        <option *ngFor="let screen of screens" value="{{ screen['screenId']}}">{{ screen['screenName']
+                            }}</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control" id="showDate" name="showDate"
+                        formControlName="showDate">
+                </div>
+                <div class="col-sm-3">
+                    <input type="time" class="form-control" id="showTime" name="showTime"
+                        formControlName="showTime">
+                </div>
+                <div class="col-sm-3">
+                    <select class="form-select" id="showStatus" name="showStatus" formControlName="showStatus">
+                        <option value=0 selected>Released</option>
+                        <option value=2>Halted</option>
+                        <option value=1>Upcoming</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

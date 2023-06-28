@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let item of data">
+            <div class="card" style="width: 18rem; height: 25rem;" id="movie-card">
+                <img src="{{ item['posterImage'] }}" class="card-img-top" alt='{{ item["movieName"]}}' id="movie-card-image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item["movieName"]}}</h5>
+                    <p class="card-text">{{ (item["movieDescription"] + '').length > 100 ?
+                        (item["movieDescription"] + '').substring(0, 99) : item["movieDescription"] }} <br /> Rating: {{
+                        item["movieRating"]}} <br />
+                        Language:
+                        {{ item["language"]}} <br /> Genre: {{ item["genre"]}}</p>
+                    <a (click)="redirectPage(item['movieId'])" class="btn btn-primary">Read More</a>
+                    <a (click)="redirectToEditPage(item['movieId'])" class="btn btn-primary">Edit Movie</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

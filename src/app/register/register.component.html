@@ -1,0 +1,44 @@
+<div class="login-page">
+  <div class="error-message" *ngIf="message !== ''">
+    <div class="alert alert-danger">{{ message }}</div>
+  </div>
+  <form class="border border-info-subtle form-login" #userForm=ngForm (ngSubmit)="registerUser(userForm)">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email ID</label>
+      <input type="email" class="form-control" id="email" name="email" required ngModel #email="ngModel" />
+      <div *ngIf="email.touched && email.errors?.['required']">
+        <div class="alert alert-danger">Please enter email</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="mobile" class="form-label">Mobile</label>
+      <input type="text" class="form-control" id="mobile" name="mobile" required pattern="[0-9]{10}" ngModel #mobile="ngModel" />
+      <div *ngIf="mobile.touched && mobile.errors?.['required']"> 
+        <div class="alert alert-danger">Please enter mobile number</div>
+      </div>
+      <div *ngIf="mobile.touched && mobile.errors?.['pattern']">
+        <div class="alert alert-danger">Please enter valid mobile number</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="dateOfBirth" class="form-label">Date of Birth</label>
+      <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" ngModel #dateOfBirth="ngModel">
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username" required ngModel #username="ngModel">
+      <div *ngIf="username.touched && username.errors?.['required']">
+        <div class="alert alert-danger">Please enter username</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required ngModel #password="ngModel">
+      <div *ngIf="password.touched && password.errors?.['required']">
+        <div class="alert alert-danger">Please enter password</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <p><a href="/login" class="link-primary">Already have an account?</a></p>
+  </form>
+</div>

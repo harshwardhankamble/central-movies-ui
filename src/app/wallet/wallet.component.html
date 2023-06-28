@@ -1,0 +1,33 @@
+<div class="container">
+<div class="card">
+    <div class="card-header">
+        Wallet
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Balance: {{ wallet['balance'] }}</h5>
+        <p class="card-text">Username: {{ wallet['userName'] }}</p>
+        <p class="card-text">Create Date: {{ wallet['createDate'] }}</p>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">Transaction Id</th>
+          <th scope="col">Transaction Date Time</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Transaction Status</th>
+          <th scope="col">Payment Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tran of wallet['transactions']">
+          <th scope="row">{{ tran['transactionId'] }}</th>
+          <td>{{ tran['transactionDate'] }}</td>
+          <td>{{ tran['amount'] }}</td>
+          <td>{{ tran['transactionStatus'] }}</td>
+          <td>{{ tran['paymentType'] }}</td>
+        </tr>
+      </tbody>
+  </table>
+</div>

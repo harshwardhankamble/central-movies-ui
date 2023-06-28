@@ -1,0 +1,108 @@
+<div class="movieForm mx-auto">
+    <form [formGroup]="movieForm" (ngSubmit)="addNewMovie()">
+        <div class="mb-3">
+            <label for="movieName" class="form-label">Movie Name</label>
+            <input type="text" class="form-control" id="movieName" name="movieName" formControlName="movieName"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label for="posterImage" class="form-label">Poster Image</label>
+            <input type="text" class="form-control" id="posterImage" name="posterImage" formControlName="posterImage"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label for="totalHours" class="form-label">Total Hours</label>
+            <input type="number" class="form-control" id="totalHours" name="totalHours" formControlName="totalHours"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label for="trailerUrl" class="form-label">Trailer URL</label>
+            <input type="text" class="form-control" id="trailerUrl" name="trailerUrl" formControlName="trailerUrl"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label for="releasedDate" class="form-label">Released Date</label>
+            <input type="date" class="form-control" id="releasedDate" name="releasedDate" formControlName="releasedDate"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label for="movieDescription" class="form-label">Movie Description</label>
+            <textarea class="form-control" id="movieDescription" rows="3" name="movieDescription"
+                formControlName="movieDescription"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" id="language" name="language"
+                formControlName="language">
+                <option value="English" selected>English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Marathi">Marathi</option>
+                <option value="Telugu">Telugu</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Malyalam">Malyalam</option>
+                <option value="Punjabi">Punjabi</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" id="movieRating" name="movieRating"
+                formControlName="movieRating">
+                <option value=5 selected>5</option>
+                <option value=4>4</option>
+                <option value=3>3</option>
+                <option value=2>2</option>
+                <option value=1>1</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" id="genre" name="genre"
+                formControlName="genre">
+                <option value=0 selected>Action</option>
+                <option value=1>Comedy</option>
+                <option value=2>Thrilled</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" id="movieStatus" name="movieStatus"
+                formControlName="movieStatus">
+                <option value=0 selected>Released</option>
+                <option value=2>Halted</option>
+                <option value=1>Upcoming</option>
+            </select>
+        </div>
+
+        <div class="mb-3" formArrayName="casts">
+            <button type="button" class="btn btn-primary" (click)="addNewCast()" style="margin-bottom: 1rem;">Add More
+                Cast</button>
+            <div *ngFor="let cast of getCasts().controls; let i = index" [formGroupName]="i">
+                <div class="row">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="castName" formControlName="castName" 
+                            placeholder="Cast Name" required>
+                    </div>
+                    <div class="col-3">
+                        <select class="form-select" name="castRating" formControlName="castRating">
+                            <option value=5>5</option>
+                            <option value=4>4</option>
+                            <option value=3>3</option>
+                            <option value=2>2</option>
+                            <option value=1>1</option>
+                        </select>
+                    </div>
+                </div>
+                <textarea class="form-control" rows="3" name="castDescription" placeholder="Description"
+                    formControlName="castDescription"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-primary" style="margin-left: 1rem;">Rest</button>
+    </form>
+</div>
